@@ -11,16 +11,16 @@ from sys.databases;
 select name from sys.databases;
 select name from sys.tables;
 
-create database mukesh;
+create database madhurima;
 select name from sys.databases;
-DRop database mukesh;    -- Delete database,table 
+DRop database madhurima;    -- Delete database,table 
 select name from sys.databases;
 use school_1;              -- Using the particular database
 create database sevenmentor;
 select name from sys.databases;
 use sevenmentor;
 drop database sevenmentor;
-use mukesh;
+use madhurima;
 use school_1;
 create database employee;
 select name from sys.databases;
@@ -60,7 +60,7 @@ select * from employee_details;  -- To fetch data from table
 
 -- Insert records in table
 insert into employee_details(Emp_id,emp_name,emp_salary) 
-values(101,'Mukesh Jaiswal',336000);
+values(101,'Madhurima C',336000);
 
 use school_1;
 
@@ -123,7 +123,7 @@ insert into Char_tab3 values(1,'Mukesh',10000,'2024-06-11');
 select name,len(name)as Char_length,DATALENGTH(name) as Data_length from Char_tab3;
 
 create table Char_tab4(id int,name nvarchar(10),salary float, date_doj date);
-insert into Char_tab4 values(1,'Mukesh',10000,'2024-06-11');
+insert into Char_tab4 values(1,'Madhu',10000,'2024-06-11');
 select name,len(name)as Char_length,DATALENGTH(name) as Data_length from Char_tab4;
 
 -- Arithmetic operator
@@ -385,7 +385,7 @@ create database constraints_db;
 use constraints_db;
 
 create table emp1(Emp_id int not null,Emp_name varchar(30),Mob_no bigint);
-insert into emp1 values(10,'Mukesh',8308890011);
+insert into emp1 values(10,'Madhu',8308890011);
 insert into emp1 (emp_name,mob_no) values ('Ankul',9373174669);   -- It will show error because emp_id not specified
 insert into emp1 values(NULL,'Pandurang',9373174669);  -- It will show error that emp_id cannot be null
 
@@ -393,7 +393,7 @@ insert into emp1 values(NULL,'Pandurang',9373174669);  -- It will show error tha
 use employee;
 create table emp2(Emp_id int,emp_name varchar(30),current_status varchar(20) default 'Active',award int default 0);
 exec sp_help 'emp2';
-insert into emp2(emp_id,emp_name,award) values (121,'Mukesh Jaiswal',15);
+insert into emp2(emp_id,emp_name,award) values (121,'Madhu',15);
 select * from emp2;
 insert into emp2 values (150,'Ankul Tekade',Null,10);
 insert into emp2 values (150,'Ankul Tekade',Null,null);
@@ -404,7 +404,7 @@ select * from emp2;
 -- the values in a column must satisfy.
 
 create table emp3(emp_id int,emp_name varchar(20), Age int check(age>18));
-insert into emp3 values(32,'Mukesh',15);   -- It will show error that constraint is violated
+insert into emp3 values(32,'Madhu',15);   -- It will show error that constraint is violated
 insert into emp3 values(54,'Ankul',19);
 select * from emp3;
 
@@ -423,8 +423,8 @@ select * from emp4;
 -- PRIMARY KEY Constraint:
 
 create table emp5(emp_id int primary key,emp_name varchar(30),mob_no bigint);
-insert into emp5 values(101,'Mukesh',8308890011);
-insert into emp5 values(null,'Mukesh',8308890011);   -- It will give error as , Primary key can not be null 
+insert into emp5 values(101,'Madhu',8308890011);
+insert into emp5 values(null,'Madhu',8308890011);   -- It will give error as , Primary key can not be null 
 
 create table emp6(emp_id int,emp_name varchar(30),mob_no bigint,primary key(emp_id),unique(mob_no));  -- It can be written in this format also
 insert into emp6 values(151,'Ankul Tekade',8308890011);
@@ -441,8 +441,8 @@ select conc
 -- used to generate unique number in a sequence
 create table emp7(emp_id int Identity(1,1),emp_name varchar(30),salary float,primary key(emp_id));  -- Identity=Auto increment
 Set Identity_Insert emp7 ON;
-insert into emp7(emp_id ,emp_name ,salary) values(101,'Mukesh',500000);
-insert into emp7 (emp_id ,emp_name ,salary)values(null,'Mukesh',700000); -- it will give 102 as emp_id as auto increament is there
+insert into emp7(emp_id ,emp_name ,salary) values(101,'Madhu',500000);
+insert into emp7 (emp_id ,emp_name ,salary)values(null,'Madhu',700000); -- it will give 102 as emp_id as auto increament is there
 Set Identity_Insert emp7 OFF;
 INSERT INTO emp7 (emp_name, salary)
 VALUES ('Mukesh', 700000);
@@ -472,12 +472,12 @@ emp_id = 1 AND department_id = 100;
 
 set identity_insert employee_tb off;
 create table employee_tb(Sr_no int identity(1,1),Emp_id int unique not null,Dept_id int unique not null,Emp_name varchar(30) default 'Active',Gender varchar(10) not null,Age int check (Age>18),salary float not null,mob_no bigint unique not null,Awards_recieved int default 0,primary key(emp_id,Dept_id),check(len(mob_no)=10),check(gender in('Male','Female')));
-insert into employee_tb (Emp_id,Dept_id,Emp_name,Gender,Age ,salary ,mob_no ,Awards_recieved)values(101,5,'Mukesh','Male',23,20000,1234567809,2);
+insert into employee_tb (Emp_id,Dept_id,Emp_name,Gender,Age ,salary ,mob_no ,Awards_recieved)values(101,5,'Madhu','Male',23,20000,1234567809,2);
 select * from employee_tb;
 
 set identity_insert employee_tb2 on;
 create table employee_tb2(Sr_no int identity(1,1),Emp_id int unique not null,Dept_id int unique not null,Emp_name varchar(30) default 'Active',Gender varchar(10) not null,Age int check (Age>18),salary float not null,mob_no bigint unique not null,Awards_recieved int default 0,primary key(emp_id,Dept_id),check(len(mob_no)=10),check(gender in('Male','Female')));
-insert into employee_tb2 (Sr_no,Emp_id,Dept_id,Emp_name,Gender,Age ,salary ,mob_no ,Awards_recieved)values(1001,101,5,'Mukesh','Male',23,20000,1234567809,2);
+insert into employee_tb2 (Sr_no,Emp_id,Dept_id,Emp_name,Gender,Age ,salary ,mob_no ,Awards_recieved)values(1001,101,5,'Madhu','Female',23,20000,1234567809,2);
 set identity_insert employee_tb2 off;
 select * from employee_tb2;
 
@@ -1150,9 +1150,9 @@ select * from student;
 --set sql_safe_updates =1;
 delete from student; -- It will not run as safe mode is on
 
-select CHARINDEX('H','MukeshJaiswal');
-select SUBSTRING('MukeshJaiswal',6,13);
-select SUBSTRING('MukeshJaiswal',CHARINDEX('h','MukeshJaiswal'),LEN('MukeshJaiswal'));  
+select CHARINDEX('H','MukeshSingh');
+select SUBSTRING('MukeshSingh',6,13);
+select SUBSTRING('MukeshSingh',CHARINDEX('h','MukeshSingh'),LEN('MukeshSingh'));  
 
 -- COPY OLD TABLE INTO ANOTHER NEW TABLE WITHIN DATABASE
 
@@ -1498,10 +1498,10 @@ select * from acc;
 -- Privileges can include actions like SELECT, INSERT, UPDATE, DELETE, CREATE
 -- The revoke command is used to remove specific previliges from a user/role in the database
 
-SELECT * FROM sys.database_principals WHERE name = 'Mukesh_J';
+SELECT * FROM sys.database_principals WHERE name = 'Mukesh_S';
 -- Create a login (if it doesn't already exist)
-CREATE LOGIN Mukesh_J_login WITH PASSWORD = 'T0wn@11012001#IT';
-CREATE USER Mukesh FOR LOGIN Mukesh_J_login;
+CREATE LOGIN Mukesh_S_login WITH PASSWORD = 'T0wn@11012001#IT';
+CREATE USER Mukesh FOR LOGIN Mukesh_S_login;
 
 
 
@@ -2354,7 +2354,7 @@ countrycode in(select code from country where continent not in('Asia','Africa'))
 
 -- Correlated Subquery
 --When you need to compare rows with specific, related data 
---(e.g., comparing an employee’s salary to their department’s average).
+--(e.g., comparing an employeeÂ’s salary to their departmentÂ’s average).
 
 CREATE TABLE employees (
     emp_id INT,
@@ -4390,7 +4390,8 @@ SELECT * FROM Bank;
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
--- Scenario: You're tasked with designing a database for a new e-commerce application.CREATE TABLE Customers (
+-- Scenario: You're tasked with designing a database for a new e-commerce application.
+CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY IDENTITY(1,1),
     FirstName NVARCHAR(50),
     LastName NVARCHAR(50),
@@ -4466,7 +4467,8 @@ ALTER COLUMN Price DECIMAL(12, 4);
 --Scenario: You discover that the Products table was created with an incorrect column name. 
 --You decide to remove the table and recreate it with the correct structure.
 --Question: Write the SQL statement to completely remove the Products table from the 
---database.
+--database.
+
 CREATE TABLE NewProducts (
     ProductID INT PRIMARY KEY IDENTITY(1,1),
     ProductName NVARCHAR(100),
@@ -4486,31 +4488,39 @@ SELECT * FROM NewProducts;
 --------------------------------------------------------------------------------------
 --Scenario: You need to add a new column to track whether a customer is active or inactive.
 --Question: Write the SQL statement to add a new column named IsActive to the Customers 
---table, with a default value of 1 (for active).
+--table, with a default value of 1 (for active).
+
 ALTER TABLE Customers
 ADD IsActive BIT DEFAULT 1;
 
 ------------------------------------------------------------------------------------------------------------
 --Scenario: A previously required column (e.g., Phone Number) now allows null values.
 --Question: How would you modify the Phone Number column in the Employees table to allow 
---NULL values?ALTER TABLE Employees
+--NULL values?
+
+ALTER TABLE Employees
 ALTER COLUMN PhoneNumber INT NULL;
 
 ---------------------------------------------------------------------------------------------------------------
 --Scenario: You want to ensure that each customer has a unique email address.
 --Question: Write the SQL statement to add a unique constraint to the Email column in the 
---Customers table.ALTER TABLE Customers
+--Customers table.
+
+ALTER TABLE Customers
 ADD CONSTRAINT UQ_Email UNIQUE (Email);
 ---------------------------------------------------------------------------------------------------------------
 How many types of constraints are present in SQL Server?
-6In SQL Server, there are six main types of constraints12:
+6
+In SQL Server, there are six main types of constraints12:
 
 NOT NULL: Ensures that a column cannot have a NULL value.
 CHECK: Ensures that all values in a column satisfy a specific condition.
 DEFAULT: Sets a default value for a column if no value is specified.
 UNIQUE: Ensures that all values in a column are different.
 PRIMARY KEY: Uniquely identifies each row in a table and combines NOT NULL and UNIQUE constraints.
-FOREIGN KEY: Ensures referential integrity between tables by linking a column or a set of columns in one table to the primary key or a unique key in another table.---------------------------------------------------------------------------------------------------------------
+FOREIGN KEY: Ensures referential integrity between tables by linking a column or a set of columns in one table to the primary key or a unique key in another table.
+
+---------------------------------------------------------------------------------------------------------------
 --Q. A table named "Employees" contains the following columns: EmployeeID, FirstName, 
 --LastName, Salary. Write a query to display the full name of each employee in a single 
 --column named "FullName"
@@ -4521,7 +4531,7 @@ FROM Employees;
 ---------------------------------------------------------------------------------------------------------------
 --Q. A table named "Customers" contains the following columns: CustomerID, 
 --CustomerName, Phone. The "Phone" column can contain null values. Write a query to 
---display the customer’s name and the phone number, replacing any null values in the 
+--display the customerÂ’s name and the phone number, replacing any null values in the 
 --"Phone" column with "N/A".
 
 SELECT CustomerName, ISNULL(Phone, 'N/A') AS Phone
@@ -4548,7 +4558,9 @@ FROM Orders;
 ---------------------------------------------------------------------------------------------------------------
 --Q. You have two tables: "Orders_2023" and "Orders_2024", both with the same columns: 
 --OrderID, CustomerID, OrderDate, TotalAmount. Write a query to combine all orders from 
---both years into a single result set, removing any duplicate rows.SELECT OrderID, CustomerID, OrderDate, TotalAmount
+--both years into a single result set, removing any duplicate rows.
+
+SELECT OrderID, CustomerID, OrderDate, TotalAmount
 FROM Orders_2023
 
 UNION
@@ -4559,7 +4571,9 @@ FROM Orders_2024;
 ---------------------------------------------------------------------------------------------------------------
 --Q. You have two tables: "Products_A" and "Products_B", both with the same columns: 
 --ProductID, ProductName, UnitPrice. Write a query to combine all products from both 
---tables into a single result set, including any duplicate rows.SELECT ProductID, ProductName, UnitPrice
+--tables into a single result set, including any duplicate rows.
+
+SELECT ProductID, ProductName, UnitPrice
 FROM Products_A
 
 UNION ALL
@@ -4590,23 +4604,28 @@ HAVING SUM(SalesAmount) > 100000;
 
 ---------------------------------------------------------------------------------------------------------------
 --2. Product Categories with High Sales
---• Scenario: A retail store wants to identify product categories with high sales volume.
---• Question: Write an SQL query to find the total sales for each product category. Only 
---include categories where the average sales per order are above a specified value.SELECT Category, SUM(SalesAmount) AS TotalSales, AVG(SalesAmount) AS AvgSalesPerOrder
+--Â• Scenario: A retail store wants to identify product categories with high sales volume.
+--Â• Question: Write an SQL query to find the total sales for each product category. Only 
+--include categories where the average sales per order are above a specified value.
+
+SELECT Category, SUM(SalesAmount) AS TotalSales, AVG(SalesAmount) AS AvgSalesPerOrder
 FROM Sales
 GROUP BY Category
 HAVING AVG(SalesAmount) > 500;  -- Replace 500 with your desired threshold value
 
 ---------------------------------------------------------------------------------------------------------------
 --3. Customers with Multiple Orders
---• Scenario: A company wants to identify customers who have placed multiple orders.
---• Question: Write an SQL query to find the number of orders placed by each customer. 
+--Â• Scenario: A company wants to identify customers who have placed multiple orders.
+--Â• Question: Write an SQL query to find the number of orders placed by each customer. 
 --Only include customers who have placed more than a certain number of orders (e.g., 3 
---orders).SELECT CustomerID, COUNT(OrderID) AS NumberOfOrders
+--orders).
+
+SELECT CustomerID, COUNT(OrderID) AS NumberOfOrders
 FROM Orders
 GROUP BY CustomerID
 HAVING COUNT(OrderID) > 3;  -- Replace 3 with your desired threshold value
----------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------
 --1. Extracting Domain Names from Email Addresses
 --Scenario: You have a table of customer data with an "Email" column. You need to 
 --extract the domain name (e.g., "gmail.com", "yahoo.com") from each email address.
@@ -4649,4 +4668,5 @@ FROM
 --d) 00:00:01
 
 The function will return the difference in days, ignoring the time portion. 
+
 The difference between 2020-11-30 and 2020-11-29 is 1 day.
